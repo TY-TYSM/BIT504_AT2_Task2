@@ -1,7 +1,7 @@
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
-
+import javax.swing.JFrame;
 
 
 public class GameMain extends JPanel implements MouseListener{
@@ -26,8 +26,8 @@ public class GameMain extends JPanel implements MouseListener{
 	// the game board 
 	private Board board;
 	 	 
-	//TODO: create the enumeration for the variable below (GameState currentState)
-	//HINT all of the states you require are shown in the code within GameMain
+	//TODO: create the enumeration for the variable below (GameState currentState) DONE
+	//HINT all of the states you require are shown in the code within GameMain DONE
 	private GameState currentState; 
 	
 	// the current player
@@ -75,8 +75,8 @@ public class GameMain extends JPanel implements MouseListener{
 				
 				
 				//TODO: set the default close operation of the frame to exit_on_close
-		            
-				
+				 
+				frame.setDefaultCloseOperation(EXIT_ON_CLOSE);
 				frame.pack();             
 				frame.setLocationRelativeTo(null);
 				frame.setVisible(true);
