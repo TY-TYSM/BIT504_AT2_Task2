@@ -49,8 +49,6 @@ public class Cell {
 		
 		content = Player.Empty;
 		
-	
-
 		
 	}
 		

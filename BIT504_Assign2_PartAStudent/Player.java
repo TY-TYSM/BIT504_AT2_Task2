@@ -1,5 +1,5 @@
 /**
- * Enumeration for the players 
+ * Enumeration for the player
  */
 
 public enum Player {

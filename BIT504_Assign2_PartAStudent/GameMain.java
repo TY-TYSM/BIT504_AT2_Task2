@@ -99,7 +99,7 @@ public class GameMain extends JPanel implements MouseListener{
 
 				
 			} else {    
-				//Update status bar to display the message "O"'s Turn done
+				//Update status bar to display the message "O"'s Turn 
 				statusBar.setForeground(Color.RED);          
 				statusBar.setText("O's Turn");
 
