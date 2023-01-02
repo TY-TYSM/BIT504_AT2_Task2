@@ -26,20 +26,17 @@ public class GameMain extends JPanel implements MouseListener{
 	// the game board 
 	private Board board;
 	 	 
-	//TODO: create the enumeration for the variable below (GameState currentState) DONE
-	//HINT all of the states you require are shown in the code within GameMain DONE
 	private GameState currentState; 
 	
 	// the current player
 	private Player currentPlayer; 
 	// for displaying game status message
-	private JLabel statusBar;       
-	
+	private JLabel statusBar;       	
 
 	/** Constructor to setup the UI and game components on the panel */
 	public GameMain() {   
 		
-		// TODO: This JPanel fires a MouseEvent on MouseClicked so add required event listener to 'this'.          
+		// Add MouseListener event         
 	    addMouseListener(this);
 	    
 		// Setup the status bar (JLabel) to display status message       
@@ -55,11 +52,11 @@ public class GameMain extends JPanel implements MouseListener{
 		// account for statusBar height in overall height
 		setPreferredSize(new Dimension(CANVAS_WIDTH, CANVAS_HEIGHT + 30));
 		
+		//create new instance of the board class
+		board = new Board(); 
 		
-		board = new Board(); // TODO: Create a new instance of the game "Board"class. HINT check the variables above for the correct name done
 		
-		
-		//TODO: call the method to initialise the game board done
+		//Initialise the game board 
 		initGame();
 
 	}
@@ -71,26 +68,15 @@ public class GameMain extends JPanel implements MouseListener{
 				//create a main window to contain the panel
 				JFrame frame = new JFrame(TITLE);
 				
-				//TODO: create the new GameMain panel and add it to the frame done
+				//create the new GameMain panel and add to frame 
 				
-				frame.add(new GameMain());
-						
-	//			JPanel panel = new JPanel();
-				
-				
-				
-				
-				//TODO: set the default close operation of the frame to exit_on_close done
+				frame.add(new GameMain());			
 				 
 				frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 				frame.pack();             
 				frame.setLocationRelativeTo(null);
 				frame.setVisible(true);
-			//	frame.add(panel);
-				
-		//		frame.setSize(CANVAS_WIDTH, CANVAS_HEIGHT);
-			
-			
+		
 	         }
 		 });
 	}
@@ -104,19 +90,18 @@ public class GameMain extends JPanel implements MouseListener{
 		
 		//set status bar message
 		if (currentState == GameState.Playing) {          
-			statusBar.setForeground(Color.BLACK);          
+			statusBar.setForeground(Color.BLACK);    
+			//Update the status bar to display the message "X"'s Turn
 			if (currentPlayer == Player.Cross) {   
 			
 				statusBar.setForeground(Color.RED);          
 				statusBar.setText("X's Turn");
-				//TODO: use the status bar to display the message "X"'s Turn done
 
 				
 			} else {    
-				
+				//Update status bar to display the message "O"'s Turn done
 				statusBar.setForeground(Color.RED);          
 				statusBar.setText("O's Turn");
-				//TODO: use the status bar to display the message "O"'s Turn done
 
 				
 			}       
@@ -154,20 +139,20 @@ public class GameMain extends JPanel implements MouseListener{
 		public void updateGame(Player thePlayer, int row, int col) {
 			//check for win after play
 			if(board.hasWon(thePlayer, row, col)) {
+				
+				// Check which player has won and update current state based on who has won
 				if (thePlayer == Player.Cross) {
 					currentState = GameState.Cross_won;
 				}
 				if (thePlayer == Player.Nought) {
 					currentState = GameState.Nought_won;
 				}
-				// TODO: check which player has won and update the currentstate to the appropriate gamestate for the winner
 
 				
 			} else 
 				if (board.isDraw ()) {
-					
+					// change GameState to a draw if there is a draw
 					currentState = GameState.Draw;
-				// TODO: set the currentstate to the draw gamestate DONE
 
 			}
 			//otherwise no change to current state of playing
@@ -205,7 +190,7 @@ public class GameMain extends JPanel implements MouseListener{
 			initGame();            
 		}   
 		
-		//TODO: redraw the graphics on the UI done         
+		//Redraw the graphics on the UI          
            repaint();
 	}
 		
